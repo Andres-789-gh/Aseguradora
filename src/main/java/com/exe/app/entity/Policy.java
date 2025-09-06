@@ -29,7 +29,7 @@ public class Policy {
     @Column(nullable = false, length = 50)
     private String policyType;
 
-    @NotBlank
+    @NotNull
     @Column(nullable = false)
     private Double premium;
 

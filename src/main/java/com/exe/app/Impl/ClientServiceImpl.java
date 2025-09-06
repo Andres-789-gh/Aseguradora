@@ -46,10 +46,10 @@ public class ClientServiceImpl implements ClientService {
     //create client
     @Override
     public ClientDto createClient(ClientDto clientDto) {
-        if (clientDto.getDoc() != null && clientRepository.existByDoc(clientDto.getDoc())) {
+        if (clientDto.getDoc() != null && clientRepository.existsByDoc(clientDto.getDoc())) {
             throw new IllegalArgumentException("Documento ya existente.");
         }
-        if (clientDto.getEmail() != null && clientRepository.existByEmail(clientDto.getEmail())) {
+        if (clientDto.getEmail() != null && clientRepository.existsByEmail(clientDto.getEmail())) {
             throw new IllegalArgumentException("Email ya existente.");
         }
 
@@ -66,13 +66,13 @@ public class ClientServiceImpl implements ClientService {
 
         // verificar si el doc ya existe en otro cliente
         if (clientDto.getDoc() != null && !clientDto.getDoc().equals(existingClient.getDoc())
-            && clientRepository.existByDoc(clientDto.getDoc())) {
+            && clientRepository.existsByDoc(clientDto.getDoc())) {
             throw new IllegalArgumentException("Documento ya existente en otro cliente.");
         }
 
         //lo mismo con el email
         if (clientDto.getEmail() != null && !clientDto.getEmail().equals(existingClient.getEmail())
-                && clientRepository.existByEmail(clientDto.getEmail())) {
+                && clientRepository.existsByEmail(clientDto.getEmail())) {
             throw new IllegalArgumentException("Email ya existente en otro cliente.");
         }
 
